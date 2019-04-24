@@ -6,7 +6,7 @@
         <style>
             body {
                 font-family: Arial;
-                background: #f9f1db;
+                background: #faf4e4;
             }
 
             .todo-all {
@@ -20,6 +20,19 @@
                 margin: 5px;
                 border: 1.5px solid black;
                 box-shadow: 3px 3px 0px 0px rgba(0,0,0,0.75);
+                display: inline-block;
+            }
+
+            .work-todo {
+                background-color: rgb(255, 234, 167);
+                border-radius: 3px;
+                border: 1px solid #DEB887;
+                padding: 5px 15px 5px 15px;
+                margin: 5px;
+            }
+            input[type=text] {
+                padding: 5px;
+                margin-bottom: 7px;
             }
 
 
@@ -30,31 +43,35 @@
     <div class='todo-all'>
         <h2>Santi's Bello To-do List</h2>
         <input type="text" id="myInput">
-        <span class='btn-add' onclick='addTodo()'>Add</span>
-        <span class='btn-remove' onclick='removeTodo()'>Remove</span>
-
+        <div>
+            <span class='btn-add' onClick='addTodo()'>Add</span>
+            <span class='btn-remove' onClick='removeTodo()'>Remove Last</span>
+        </div>
+        <div class='work-todo'>aaaa</div>
     </div>
 
     <script>
-    var elTodoAll = document.getElementsByClassName("todo-all");
-    var countTodos = document.querySelectorAll('.work-todo').length;
-
+    let elTodoAll = document.getElementsByClassName("todo-all")[0];
     console.log(elTodoAll)
-
-    var addTodo = function addTodo() {
-        var elDiv = document.createElement("div")
-        elDiv.innerHTML = "testing add sb1";
-        elDiv.setAttribute("class", "work-todo")
-        elTodoAll[0].appendChild(elDiv);
+    
+    // Añadir fila
+    let addTodo = function addTodo() {
+        let inputValue = document.getElementById("myInput").value
+        if (inputValue != '') {
+            var elDiv = document.createElement("div")
+            elDiv.innerText = inputValue;
+            elDiv.setAttribute("class", "work-todo")
+            elTodoAll.appendChild(elDiv);
+        }
     }
 
-    var removeTodo = function removeTodo() {
+    // Quitar fila
+    let removeTodo = function removeTodo() {
         
+        let countTodos = document.querySelectorAll('.work-todo').length;
         let selectLastDiv = 
-            document.getElementsByClassName("work-todo")[countTodos];
-            console.log(selectLastDiv)
-        
-        elTodoAll[0].removeChild(selectLastDiv);
+            document.getElementsByClassName("work-todo")[countTodos - 1];
+        elTodoAll.removeChild(selectLastDiv);
     }
     </script>
 
