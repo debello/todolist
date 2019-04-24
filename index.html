@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>To-do List</title>
+        <style>
+            body {
+                font-family: Arial;
+                background: #f9f1db;
+            }
+
+            .todo-all {
+                display: grid;
+                justify-items: center;
+                
+            }
+
+            .btn-add, .btn-remove {
+                padding: 5px;
+                margin: 5px;
+                border: 1.5px solid black;
+                box-shadow: 3px 3px 0px 0px rgba(0,0,0,0.75);
+            }
+
+
+        </style>
+    </head>
+    <body>
+
+    <div class='todo-all'>
+        <h2>Santi's Bello To-do List</h2>
+        <input type="text" id="myInput">
+        <span class='btn-add' onclick='addTodo()'>Add</span>
+        <span class='btn-remove' onclick='removeTodo()'>Remove</span>
+
+    </div>
+
+    <script>
+    var elTodoAll = document.getElementsByClassName("todo-all");
+    var countTodos = document.querySelectorAll('.work-todo').length;
+
+    console.log(elTodoAll)
+
+    var addTodo = function addTodo() {
+        var elDiv = document.createElement("div")
+        elDiv.innerHTML = "testing add sb1";
+        elDiv.setAttribute("class", "work-todo")
+        elTodoAll[0].appendChild(elDiv);
+    }
+
+    var removeTodo = function removeTodo() {
+        
+        let selectLastDiv = 
+            document.getElementsByClassName("work-todo")[countTodos];
+            console.log(selectLastDiv)
+        
+        elTodoAll[0].removeChild(selectLastDiv);
+    }
+    </script>
+
+    </body>    
+</html>
